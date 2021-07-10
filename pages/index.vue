@@ -75,3 +75,9 @@
     </v-col>
   </v-row>
 </template>
+
+<script>
+export default {
+  layout: 'mobile'
+}
+</script>
