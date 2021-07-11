@@ -3,25 +3,17 @@
     <v-layout align-center justify-center>
       <v-flex>
         <div class="text-h4 text-center mb-10 mt-3">
-          <v-icon class="mr-2" large>
-            mdi-leaf
-          </v-icon>Hello {{ loggedInUser.name.split(' ')[0] }}
+          Profile
         </div>
-        <v-row align="center">
-          <v-col cols="7">
-            <div class="text-h6">
-              Current Price
-            </div>
-            <span class="text-h5">{{ currentData.price }}</span>
-            <span class="text-body-1">ct€/kWh</span>
-          </v-col>
-          <v-col cols="5">
-            <ChartDoughnut
-              :data="doughnutData"
-              :central-text="currentData.greenShare + '%'"
-              :units="chartUnits"
-            />
-          </v-col>
+        <v-row align="center" justify="center">
+          <v-avatar
+            size="56"
+            color="grey"
+          >
+            <v-icon x-large>
+              mdi-account
+            </v-icon>
+          </v-avatar>
         </v-row>
         <v-row align="center">
           <v-col cols="12">

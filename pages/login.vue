@@ -2,7 +2,7 @@
   <v-container fill-height>
     <v-layout align-center justify-center>
       <v-flex class="login-form text-center">
-        <div class="display-1 my-10">
+        <div class="text-h4 my-10">
           <v-icon class="mr-2" large>
             mdi-leaf
           </v-icon> My Q.ON
