@@ -3,72 +3,111 @@
     <v-layout align-center justify-center>
       <v-flex>
         <div class="text-h4 text-center mb-10 mt-3">
+          <v-icon class="mr-2" large>
+            mdi-account
+          </v-icon>
           Profile
         </div>
-        <v-row align="center" justify="center">
-          <v-avatar
-            size="56"
-            color="grey"
-          >
-            <v-icon x-large>
-              mdi-account
-            </v-icon>
-          </v-avatar>
-        </v-row>
         <v-row align="center">
           <v-col cols="12">
-            <div class="text-h6">
-              Daily report
-            </div>
             <v-card class="my-3 py-2 px-7">
               <v-row>
                 <v-col cols="6">
                   <div class="text-overline">
-                    Total Amount
+                    Member since
                   </div>
-                  <span class="font-weight-bold">
-                    {{ dailyData.totalAmount }}
-                  </span>
-                  <span>kWh</span>
+                  <div class="font-weight-bold" align="right">
+                    {{ loggedInUser.createdAt }}
+                  </div>
                 </v-col>
                 <v-col cols="6">
                   <div class="text-overline">
-                    Average price
+                    Member ID
                   </div>
-                  <span class="font-weight-bold">
-                    {{ dailyData.averagePrice }}
-                  </span>
-                  <span>ct€/kWh</span>
+                  <div class="font-weight-bold" align="right">
+                    {{ loggedInUser.id }}
+                  </div>
                 </v-col>
               </v-row>
             </v-card>
           </v-col>
         </v-row>
-        <v-row>
-          <v-col cols="12">
-            <div class="text-h6">
-              Recent consumptions
-            </div>
-            <v-btn-toggle v-model="aggregateWindow" style="width: 33%">
-              <v-btn block small value="week">
-                Week
-              </v-btn>
-              <v-btn block small value="month">
-                Month
-              </v-btn>
-              <v-btn block small value="year">
-                Year
-              </v-btn>
-            </v-btn-toggle>
-            <div class="text-overline">
-              Total
-            </div>
-            <span class="font-weight-bold">
-              {{ consumptions[aggregateWindow].total }}
-            </span>
-            <span>kWh</span>
-          </v-col>
-          <ChartBar class="barchartContainer" :data="barData" style="width: 100% !important; height: 200px !important;" />
+        <v-card class="pa-5 my-5" color="#C5E1A5">
+          <v-row>
+            <v-col cols="8" style="color: #33691E;">
+              <div class="text-h6" color="#33691E">
+                <v-icon>
+                  mdi-leaf
+                </v-icon>
+                Green share
+              </div>
+              <div class="text-caption">
+                Making green energy a priority
+              </div>
+              <p class="text-h5 text-right mb-0">
+                {{ loggedInUser.metrics.greenShare }}
+                <span class="text-body-1">%</span>
+              </p>
+            </v-col>
+            <v-col cols="4">
+              <v-img
+                src="https://picsum.photos/200"
+              />
+            </v-col>
+          </v-row>
+        </v-card>
+        <v-card class="pa-5 my-5" color="#D7CCC8">
+          <v-row>
+            <v-col cols="8" style="color: #3E2723;">
+              <div class="text-h6">
+                <v-icon color="#3E2723">
+                  mdi-cloud
+                </v-icon>
+                C0<sub>2</sub> not emitted
+              </div>
+              <div class="text-caption">
+                Less carbon in the atmosphere
+              </div>
+              <p class="text-h5 text-right mb-0">
+                {{ loggedInUser.metrics.co2Saved }}
+                <span class="text-body-1">tons</span>
+              </p>
+            </v-col>
+            <v-col cols="4" order="first">
+              <v-img
+                src="https://picsum.photos/201"
+              />
+            </v-col>
+          </v-row>
+        </v-card>
+        <v-card class="pa-5 my-5" color="#FFCC80">
+          <v-row>
+            <v-col cols="8" style="color: #BF360C;">
+              <div class="text-h6">
+                <v-icon color="#BF360C">
+                  mdi-leaf
+                </v-icon>
+                Money saved
+              </div>
+              <div class="text-caption">
+                Less pollution & more money
+              </div>
+              <p class="text-h5 text-right mb-0">
+                {{ loggedInUser.metrics.moneySaved }}
+                <span class="text-body-1">€</span>
+              </p>
+            </v-col>
+            <v-col cols="4">
+              <v-img
+                src="https://picsum.photos/202"
+              />
+            </v-col>
+          </v-row>
+        </v-card>
+        <v-row class="justify-center pt-5">
+          <v-btn large rounded nuxt :to="'/user/' + loggedInUser.id">
+            Share
+          </v-btn>
         </v-row>
       </v-flex>
     </v-layout>
@@ -102,7 +141,6 @@ export default {
       }
     },
     barData () {
-      console.log(this.aggregateWindow)
       return {
         labels: this.consumptions[this.aggregateWindow].keys,
         datasets: [

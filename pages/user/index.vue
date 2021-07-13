@@ -110,7 +110,6 @@ export default {
       }
     },
     barData () {
-      console.log(this.aggregateWindow)
       return {
         labels: this.consumptions[this.aggregateWindow].keys,
         datasets: [

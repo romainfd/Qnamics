@@ -7,19 +7,44 @@ export const state = () => ({
       id: -1,
       name: 'Incognito Mode',
       email: 'test@mail.com',
-      createdAt: '27/02/2021'
+      createdAt: '27/02/2021',
+      metrics: {
+        greenShare: 28.3,
+        co2Saved: 765,
+        moneySaved: 324
+      }
     }
   },
   users: [{
-    id: 13463279,
+    id: '-1',
+    name: 'Incognito Mode',
+    email: 'test@mail.com',
+    createdAt: '27/02/2021',
+    metrics: {
+      greenShare: 28.3,
+      co2Saved: 765,
+      moneySaved: 324
+    }
+  }, {
+    id: '13463279',
     name: "Corey O'Meara",
     email: 'corey@mail.com',
-    createdAt: '27/02/2021'
+    createdAt: '27/02/2021',
+    metrics: {
+      greenShare: 28.3,
+      co2Saved: 765,
+      moneySaved: 324
+    }
   }, {
-    id: 1783432,
+    id: '1783432',
     name: 'John Doe',
     email: 'john@mail.com',
-    createdAt: '27/02/2021'
+    createdAt: '27/02/2021',
+    metrics: {
+      greenShare: 28.3,
+      co2Saved: 765,
+      moneySaved: 324
+    }
   }],
   current: {
     price: 30.88,
@@ -98,6 +123,11 @@ export const actions = {
     }
     commit(SET_CURRENT_USER, user)
     return true
+  },
+
+  getUser ({ commit, state }, id) {
+    // ToDo: remove sensible user information
+    return state.users.find(u => u.id === id)
   }
 }
 

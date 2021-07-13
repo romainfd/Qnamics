@@ -76,7 +76,7 @@
 
 <script>
 export default {
-  layout: 'mobile',
+  layout: 'mobile-empty',
   data () {
     return {
       user: {
