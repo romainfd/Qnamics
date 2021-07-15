@@ -63,7 +63,7 @@
                 <v-icon color="#3E2723">
                   mdi-cloud
                 </v-icon>
-                C0<sub>2</sub> not emitted
+                CO<sub>2</sub> not emitted
               </div>
               <div class="text-caption">
                 Less carbon in the atmosphere
@@ -119,44 +119,8 @@ import { mapGetters } from 'vuex'
 
 export default {
   layout: 'mobile',
-  data () {
-    return {
-      aggregateWindow: 'week',
-      chartUnits: {
-        style: 'percent'
-      }
-    }
-  },
   computed: {
-    ...mapGetters(['loggedInUser', 'currentData', 'dailyData', 'consumptions']),
-    doughnutData () {
-      return {
-        labels: ['Non-renewable', 'Renewable'],
-        datasets: [
-          {
-            data: [100 - this.currentData.greenShare, this.currentData.greenShare],
-            backgroundColor: ['#f87979', '#34c369']
-          }
-        ]
-      }
-    },
-    barData () {
-      return {
-        labels: this.consumptions[this.aggregateWindow].keys,
-        datasets: [
-          {
-            label: 'Non-renewable',
-            data: this.consumptions[this.aggregateWindow].values,
-            backgroundColor: '#f87979'
-          },
-          {
-            label: 'Renewable',
-            data: this.consumptions[this.aggregateWindow].values,
-            backgroundColor: '#34c369'
-          }
-        ]
-      }
-    }
+    ...mapGetters(['loggedInUser'])
   }
 }
 </script>

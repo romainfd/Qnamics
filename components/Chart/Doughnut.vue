@@ -53,11 +53,13 @@ export default {
             }
           }
         }),
-        tooltips: {
-          callbacks: {
-            label: this.labelFunction(this.units)
+        ...(this.units && {
+          tooltips: {
+            callbacks: {
+              label: this.labelFunction(this.units)
+            }
           }
-        }
+        })
       }
     }
   },

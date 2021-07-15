@@ -73,6 +73,12 @@ export const state = () => ({
       values: [832.4, 795.8, 823.6, 821.3, 732.7, 802.3, 775.2],
       keys: ['January', 'February', 'March', 'April', 'May', 'June', 'July']
     }
+  },
+  forecast: {
+    keys: ['0h', '1h', '2h', '3h', '4h', '5h', '6h', '7h', '8h', '9h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h', '19h', '20h', '21h', '22h', '23h'],
+    // from numpy import random; [round(20 + 20 * random.random(), 1) for _ in range(24)]
+    // + manual moves to have a nice shape
+    values: [37.63, 33.75, 34.74, 35.36, 39.6, 39.08, 28.90, 25.54, 29.59, 24.87, 31.93, 28.44, 24.78, 23.60, 25.11, 25.67, 29.05, 28.44, 33.97, 35.45, 32.94, 39.73, 31.55, 36.46]
   }
 })
 
@@ -94,6 +100,7 @@ export const getters = {
   },
 
   consumptions (state) {
+    // ToDo: should get user specific data
     const consumptions = {}
     // Compute all the green shares values
     Object.keys(state.consumptions).forEach((window) => {
@@ -112,6 +119,10 @@ export const getters = {
       }
     })
     return consumptions
+  },
+
+  forecast (state) {
+    return state.forecast
   }
 }
 

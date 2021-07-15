@@ -14,7 +14,7 @@ const cgartMixin = {
           if (units.style === 'percent') {
             value /= 100
           }
-          value = new Intl.NumberFormat('en-US', units).format(value)
+          value = new Intl.NumberFormat('de-DE', units).format(value)
         }
 
         // Collect value label

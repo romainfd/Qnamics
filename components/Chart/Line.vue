@@ -1,9 +1,9 @@
 <script>
-import { Bar } from 'vue-chartjs'
+import { Line } from 'vue-chartjs'
 const chartMixin = require('~/mixins/chartMixin')
 
 export default {
-  extends: Bar,
+  extends: Line,
   mixins: [chartMixin],
   props: {
     legend: {
@@ -35,14 +35,6 @@ export default {
         title: {
           display: !!this.title,
           text: this.title
-        },
-        scales: {
-          xAxes: [{
-            stacked: true
-          }],
-          yAxes: [{
-            stacked: true
-          }]
         },
         ...(this.units && {
           tooltips: {

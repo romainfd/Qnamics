@@ -76,7 +76,7 @@
             </span>
             <span>kWh</span>
           </v-col>
-          <ChartBar class="barchartContainer" :data="barData" style="width: 100% !important; height: 200px !important;" />
+          <ChartBar :data="barData" style="width: 100% !important; height: 200px !important;" />
         </v-row>
       </v-flex>
     </v-layout>
