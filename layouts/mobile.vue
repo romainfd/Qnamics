@@ -42,6 +42,11 @@ export default {
       this.page = to.path
     }
   },
+  beforeCreate () {
+    if (!this.$device.isMobile) {
+      this.$router.push('/')
+    }
+  },
   mounted () {
     this.page = this.$route.path
   }

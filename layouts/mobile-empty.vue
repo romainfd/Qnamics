@@ -14,6 +14,11 @@ import { mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters(['isAuthenticated', 'loggedInUser'])
+  },
+  beforeCreate () {
+    if (!this.$device.isMobile) {
+      this.$router.push('/')
+    }
   }
 }
 </script>

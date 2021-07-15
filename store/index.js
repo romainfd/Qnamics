@@ -108,12 +108,12 @@ export const getters = {
         renewable: elementwiseOperation(
           state.consumptions[window].greenShares,
           state.consumptions[window].values,
-          (gs, v) => gs * v
+          (gs, v) => Math.round(gs * v * 100) / 100
         ),
         nonRenewable: elementwiseOperation(
           state.consumptions[window].greenShares,
           state.consumptions[window].values,
-          (gs, v) => (1 - gs) * v
+          (gs, v) => Math.round((1 - gs) * v * 100) / 100
         ),
         ...state.consumptions[window]
       }

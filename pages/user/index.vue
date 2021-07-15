@@ -115,12 +115,12 @@ export default {
         datasets: [
           {
             label: 'Non-renewable',
-            data: this.consumptions[this.aggregateWindow].values,
+            data: this.consumptions[this.aggregateWindow].nonRenewable,
             backgroundColor: '#f87979'
           },
           {
             label: 'Renewable',
-            data: this.consumptions[this.aggregateWindow].values,
+            data: this.consumptions[this.aggregateWindow].renewable,
             backgroundColor: '#34c369'
           }
         ]
