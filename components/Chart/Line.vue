@@ -1,5 +1,6 @@
 <script>
 import { Line } from 'vue-chartjs'
+import { Chart } from 'chart.js'
 const chartMixin = require('~/mixins/chartMixin')
 
 export default {
@@ -21,6 +22,10 @@ export default {
     units: {
       type: Object,
       default: null
+    },
+    lineAtIndex: {
+      type: Array,
+      default: () => []
     }
   },
   computed: {
@@ -42,7 +47,8 @@ export default {
               label: this.labelFunction(this.units)
             }
           }
-        })
+        }),
+        lineAtIndex: this.lineAtIndex
       }
     }
   },
@@ -56,4 +62,39 @@ export default {
     this.renderChart(this.data, this.options)
   }
 }
+
+// Drawing a vertical line for current hour | Ref.: https://stackoverflow.com/a/43092029
+const verticalLinePlugin = {
+  getLinePosition (chart, pointIndex) {
+    const meta = chart.getDatasetMeta(0) // first dataset is used to discover X coordinate of a point
+    const data = meta.data
+    return data[pointIndex]._model.x
+  },
+  renderVerticalLine (chartInstance, pointIndex, pointText) {
+    const lineLeftOffset = this.getLinePosition(chartInstance, pointIndex)
+    const scale = chartInstance.scales['y-axis-0']
+    const context = chartInstance.chart.ctx
+
+    // render vertical line
+    context.beginPath()
+    context.strokeStyle = '#ff8c00'
+    context.moveTo(lineLeftOffset, scale.top)
+    context.lineTo(lineLeftOffset, scale.bottom)
+    context.stroke()
+
+    // write label
+    context.fillStyle = '#ff8c00'
+    context.textAlign = 'left'
+    context.fillText(pointText, 3 + lineLeftOffset, (scale.bottom - scale.top) / 2 + scale.top)
+  },
+
+  afterDatasetsDraw (chart, easing) {
+    // Adding a custom '.options' to make it work for the vue wrapper
+    if (chart.config.options.lineAtIndex) {
+      chart.config.options.lineAtIndex.forEach(({ pointIndex, pointText }) => this.renderVerticalLine(chart, pointIndex, pointText))
+    }
+  }
+}
+
+Chart.plugins.register(verticalLinePlugin)
 </script>

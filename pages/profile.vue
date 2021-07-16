@@ -85,7 +85,7 @@
             <v-col cols="8" style="color: #BF360C;">
               <div class="text-h6">
                 <v-icon color="#BF360C">
-                  mdi-leaf
+                  mdi-wallet-giftcard
                 </v-icon>
                 Money saved
               </div>
