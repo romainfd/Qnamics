@@ -45,7 +45,7 @@
                 Making green energy a priority
               </div>
               <p class="text-h5 text-right mb-0">
-                {{ loggedInUser.metrics.greenShare }}
+                {{ metrics.greenShare }}
                 <span class="text-body-1">%</span>
               </p>
             </v-col>
@@ -69,7 +69,7 @@
                 Less carbon in the atmosphere
               </div>
               <p class="text-h5 text-right mb-0">
-                {{ loggedInUser.metrics.co2Saved }}
+                {{ metrics.co2Saved }}
                 <span class="text-body-1">tons</span>
               </p>
             </v-col>
@@ -93,7 +93,7 @@
                 Less pollution & more money
               </div>
               <p class="text-h5 text-right mb-0">
-                {{ loggedInUser.metrics.moneySaved }}
+                {{ metrics.moneySaved }}
                 <span class="text-body-1">€</span>
               </p>
             </v-col>
@@ -120,7 +120,7 @@ import { mapGetters } from 'vuex'
 export default {
   layout: 'mobile',
   computed: {
-    ...mapGetters(['loggedInUser'])
+    ...mapGetters(['loggedInUser', 'metrics'])
   }
 }
 </script>

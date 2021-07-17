@@ -7,44 +7,24 @@ export const state = () => ({
       id: -1,
       name: 'Incognito Mode',
       email: 'test@mail.com',
-      createdAt: '27/02/2021',
-      metrics: {
-        greenShare: 28.3,
-        co2Saved: 765,
-        moneySaved: 324
-      }
+      createdAt: '27/02/2021'
     }
   },
   users: [{
     id: '-1',
     name: 'Incognito Mode',
     email: 'test@mail.com',
-    createdAt: '27/02/2021',
-    metrics: {
-      greenShare: 28.3,
-      co2Saved: 765,
-      moneySaved: 324
-    }
+    createdAt: '27/02/2021'
   }, {
     id: '13463279',
     name: "Corey O'Meara",
     email: 'corey@mail.com',
-    createdAt: '27/02/2021',
-    metrics: {
-      greenShare: 28.3,
-      co2Saved: 765,
-      moneySaved: 324
-    }
+    createdAt: '27/02/2021'
   }, {
     id: '1783432',
     name: 'John Doe',
     email: 'john@mail.com',
-    createdAt: '27/02/2021',
-    metrics: {
-      greenShare: 28.3,
-      co2Saved: 765,
-      moneySaved: 324
-    }
+    createdAt: '27/02/2021'
   }],
   current: {
     price: 30.88,
@@ -86,6 +66,35 @@ export const state = () => ({
         ...(hoursInDay.map(h => 'D+2 ' + h))],
       values: [...priceOverDay, ...otherPriceOverDay, ...priceOverDay]
     }
+  },
+  metrics: {
+    greenShare: 28.3,
+    co2Saved: 765,
+    moneySaved: 324
+  },
+  equivalents: {
+    co2saved: [{
+      amount: 10,
+      description: 'Berlin - New-York flights',
+      icon: 'mdi-airplane-takeoff'
+    }, {
+      amount: 216,
+      description: 'days of streaming',
+      icon: 'mdi-youtube-tv'
+    }, {
+      amount: 3.5,
+      description: 'days of driving',
+      icon: 'mdi-car'
+    }],
+    moneySaved: [{
+      amount: 123,
+      description: 'kg of fruits',
+      icon: 'mdi-fruit-cherries'
+    }, {
+      amount: 21,
+      description: 'days of energy supply',
+      icon: 'mdi-flash'
+    }]
   }
 })
 
@@ -130,6 +139,14 @@ export const getters = {
 
   forecast (state) {
     return state.forecast
+  },
+
+  equivalents (state) {
+    return state.equivalents
+  },
+
+  metrics (state) {
+    return state.metrics
   }
 }
 

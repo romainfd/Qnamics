@@ -69,6 +69,12 @@
             Sign up
           </v-btn>
         </div>
+        <div v-else>
+          Already have an account?
+          <v-btn @click="options.isLoggingIn = true">
+            Sign in
+          </v-btn>
+        </div>
       </v-flex>
     </v-layout>
   </v-container>
@@ -88,7 +94,7 @@ export default {
         required: v => !!v || 'This field is required'
       },
       options: {
-        isLoggingIn: true,
+        isLoggingIn: !this.$route.params.signup,
         shouldStayLoggedIn: true
       }
     }
