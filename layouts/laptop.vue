@@ -1,8 +1,8 @@
 <template>
   <v-app>
     <v-main>
-      <v-container>
-        <Nuxt />
+      <v-container style="height: 100%;" fluid>
+        <Nuxt style="height: 100%;" />
       </v-container>
     </v-main>
     <v-bottom-navigation v-model="page" app>

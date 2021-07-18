@@ -26,6 +26,10 @@ export default {
     lineAtIndex: {
       type: Array,
       default: () => []
+    },
+    hideXLabels: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
@@ -40,6 +44,14 @@ export default {
         title: {
           display: !!this.title,
           text: this.title
+        },
+        scales: {
+          // Hide x-ticks | Ref.: https://stackoverflow.com/a/23424876
+          xAxes: [{
+            ticks: {
+              display: !this.hideXLabels
+            }
+          }]
         },
         ...(this.units && {
           tooltips: {

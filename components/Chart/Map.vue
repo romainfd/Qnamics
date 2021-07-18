@@ -5,14 +5,17 @@
       :zoom="zoom"
       :center="center"
       :options="{attributionControl: false}"
-      style="height: 600px; width: 100%; z-index: 0;"
+      style="height: 100%; width: 100%; z-index: 0;"
     >
-      <v-card class="infoCard hoverRegionInfoCard">
-        Area: {{ areaHover }}
-      </v-card>
-      <v-card class="infoCard clickRegionInfoCard">
-        Area: {{ areaClick }}
-      </v-card>
+      <InfoCard
+        :area="areaClick"
+        placeholder="Click on an area to see it"
+      />
+      <InfoCard
+        :area="areaHover"
+        placeholder="Hover on an area to see it"
+        bottom
+      />
       <l-tile-layer
         :url="url"
       />
@@ -31,15 +34,16 @@ export default {
   data () {
     return {
       loading: false,
-      zoom: 5.5,
-      center: [51.25, 10.5],
+      zoom: 6,
+      center: [51.25, 15],
       geojson: null,
       // Find a nice tile layer in https://wiki.openstreetmap.org/wiki/Tiles
       // url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
       // url: 'https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
       url: 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
       areaHover: null,
-      areaClick: null
+      areaClick: null,
+      cities: []
     }
   },
   computed: {
@@ -49,20 +53,21 @@ export default {
       }
     },
     styleFunction () {
-      return () => {
+      return (feature) => {
         return {
           // Line around
           weight: 1.5,
           color: 'white',
           opacity: 1,
           // Fill
-          fillColor: colors[parseInt(colors.length * Math.random())],
+          fillColor: feature.properties.energy.color,
           fillOpacity: 0.66
         }
       }
     },
     onEachFeatureFunction () {
       return (feature, layer) => {
+        this.cities.push(feature.properties.NAME_3)
         layer.bindTooltip(
           `<div>City: ${feature.properties.NAME_3}</div><div>Region: ${feature.properties.NAME_2}</div>`,
           {
@@ -79,42 +84,19 @@ export default {
   },
   async created () {
     this.loading = true
-    const response = await fetch('https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/4_kreise/4_niedrig.geo.json')
-    // const response = await fetch('https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/3_regierungsbezirke/4_niedrig.geo.json')
-    const data = await response.json()
-    this.geojson = data
+    this.geojson = await this.$store.dispatch('getGeoData')
     this.loading = false
   },
   methods: {
     clickFeature (feature, layer) {
-      this.areaClick = feature.properties.NAME_3
+      this.areaClick = feature.properties
     },
     hoverFeature (feature, layer) {
-      this.areaHover = feature.properties.NAME_3
+      this.areaHover = feature.properties
     }
   }
 }
-
-const colors = [
-  '#C5E1A5', '#AED581', '#9CCC65',
-  '#FFAB91', '#FF8A65', '#FF7043'
-]
 </script>
 
 <style scoped>
-.infoCard {
-  position: absolute;
-  width: 250px;
-  z-index: 2000;  /* Leaflet up to 1100 | Ref.: https://stackoverflow.com/a/54635107 */
-  right: 10px;
-}
-
-.hoverRegionInfoCard {
-  top: 10px;
-}
-
-.clickRegionInfoCard {
-  bottom: 10px;
-}
-
 </style>
