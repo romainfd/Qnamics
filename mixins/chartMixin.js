@@ -15,6 +15,12 @@ const cgartMixin = {
             value /= 100
           }
           value = new Intl.NumberFormat('de-DE', units).format(value)
+          if (units.override) {
+            if (units.override.suffix) {
+              // Replace unit
+              value = value.split(' ')[0] + ' ' + units.override.suffix
+            }
+          }
         }
 
         // Collect value label

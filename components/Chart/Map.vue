@@ -68,8 +68,16 @@ export default {
     onEachFeatureFunction () {
       return (feature, layer) => {
         this.cities.push(feature.properties.NAME_3)
+        const price = Math.round(feature.properties.energy.prices[feature.properties.energy.prices.length - 1] * 100) / 100
+        const consumption = Math.round(feature.properties.energy.consumptions[feature.properties.energy.consumptions.length - 1] * 100) / 100
+        const greenShare = Math.round(feature.properties.energy.greenShares[feature.properties.energy.greenShares.length - 1] * 100)
         layer.bindTooltip(
-          `<div>City: ${feature.properties.NAME_3}</div><div>Region: ${feature.properties.NAME_2}</div>`,
+          `<strong>${feature.properties.NAME_3}</strong><span> (${feature.properties.NAME_2})</span><br/>
+           <ul>
+             <li>Green Share: <strong>${greenShare}%</strong></li>
+             <li>Price: <strong>${price} ct€/kWh</strong></li>
+             <li>Consumption: <strong>${consumption} kWh</strong></li>
+           </ul>`,
           {
             permanent: false,
             sticky: true

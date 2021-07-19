@@ -27,7 +27,7 @@
       </v-row>
       <ChartLine
         :data="lineData(area.energy.keys, area.energy.prices)"
-        :units="{ style: 'currency', currency: 'EUR' }"
+        :units="{ style: 'currency', currency: 'EUR', override: { suffix: 'ct€/kWh' } }"
         style="width: 100% !important; height: 15vh !important;"
         :line-at-index="[{
           pointIndex: (new Date()).getHours(),
@@ -36,7 +36,7 @@
       />
       <ChartLine
         :data="lineData(area.energy.keys, area.energy.consumptions)"
-        :units="{style: 'unit', unit: 'kWh'}"
+        :units="{style: 'currency', currency: 'EUR', override: { suffix: 'kWh' } }"
         style="width: 100% !important; height: 15vh !important;"
         :line-at-index="[{
           pointIndex: (new Date()).getHours(),

@@ -18,7 +18,7 @@
         </v-btn-toggle>
         <ChartLine
           :data="lineData"
-          :units="{ style: 'currency', currency: 'EUR' }"
+          :units="{ style: 'currency', currency: 'EUR', override: { suffix: 'ct€/kWh' } }"
           style="width: 100% !important; height: 72vh !important;"
           :line-at-index="[{
             pointIndex: (new Date()).getHours(),
