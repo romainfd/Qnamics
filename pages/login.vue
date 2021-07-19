@@ -99,6 +99,9 @@ export default {
       }
     }
   },
+  head () {
+    return { title: this.options.isLoggingIn ? 'Sign in' : 'Sign up' }
+  },
   methods: {
     async login () {
       if (!this.$refs.form.validate()) { return }

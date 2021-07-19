@@ -119,6 +119,9 @@ export default {
       moneyCarouselIndex: 0
     }
   },
+  head () {
+    return { title: this.user ? `${this.user.name.split(' ')[0]}'s energy page` : 'Share' }
+  },
   computed: {
     ...mapGetters(['equivalents', 'metrics'])
   },

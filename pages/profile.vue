@@ -119,6 +119,9 @@ import { mapGetters } from 'vuex'
 
 export default {
   layout: 'mobile',
+  head () {
+    return { title: 'Profile' }
+  },
   computed: {
     ...mapGetters(['loggedInUser', 'metrics'])
   }

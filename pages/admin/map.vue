@@ -7,6 +7,9 @@
 
 <script>
 export default {
-  layout: 'laptop'
+  layout: 'laptop',
+  head () {
+    return { title: 'Map' }
+  }
 }
 </script>

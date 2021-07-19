@@ -96,6 +96,9 @@ export default {
       }
     }
   },
+  head () {
+    return { title: 'Dashboard' }
+  },
   computed: {
     ...mapGetters(['loggedInUser', 'currentData', 'dailyData', 'consumptions']),
     doughnutData () {

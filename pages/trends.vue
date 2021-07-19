@@ -40,6 +40,9 @@ export default {
       duration: 'today'
     }
   },
+  head () {
+    return { title: 'Trends' }
+  },
   computed: {
     ...mapGetters(['loggedInUser', 'forecast']),
     lineData () {
