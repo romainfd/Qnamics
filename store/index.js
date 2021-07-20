@@ -102,7 +102,32 @@ export const state = () => ({
     city: {
       consumption: [1, 2, 0],
       price: []
-    }
+    },
+    cards: [{
+      label: 'Revenue',
+      value: 64.3,
+      unit: 'M€',
+      values: randomArray(3, 0.3, 24, 'revenue'),
+      keys: hoursInDay
+    }, {
+      label: 'Profit',
+      value: 2.1,
+      unit: 'M€',
+      values: randomArray(0.1, 0.01, 24, 'profit'),
+      keys: hoursInDay
+    }, {
+      label: 'Average price',
+      value: 0.34,
+      unit: 'ct€/kWh',
+      values: randomArray(0.13, 0.02, 24, 'prices'),
+      keys: hoursInDay
+    }, {
+      label: 'Energy provided',
+      value: 123.7,
+      unit: 'MWh',
+      values: randomArray(5, 0.5, 24, 'energy'),
+      keys: hoursInDay
+    }]
   }
 })
 
@@ -155,6 +180,10 @@ export const getters = {
 
   metrics (state) {
     return state.metrics
+  },
+
+  adminCards (state) {
+    return state.admin.cards
   }
 }
 

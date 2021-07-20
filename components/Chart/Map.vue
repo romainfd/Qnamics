@@ -7,13 +7,13 @@
       :options="{attributionControl: false}"
       style="height: 100%; width: 100%; z-index: 0;"
     >
-      <InfoCard
+      <AreaInfoCard
         :area="areaClick"
         placeholder="Click on an area to see it"
       />
-      <InfoCard
+      <AreaInfoCard
         :area="areaHover"
-        placeholder="Hover on an area to see it"
+        placeholder="Hover an area to see it"
         bottom
       />
       <l-tile-layer
