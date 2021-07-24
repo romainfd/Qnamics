@@ -18,9 +18,10 @@ export const state = () => ({
     createdAt: '27/02/2021'
   }, {
     id: '13463279',
-    name: "Corey O'Meara",
-    email: 'corey@mail.com',
-    createdAt: '27/02/2021'
+    name: 'Admin Q.ON',
+    email: 'admin@mail.com',
+    createdAt: '27/02/2021',
+    admin: true
   }, {
     id: '1783432',
     name: 'John Doe',
@@ -191,10 +192,10 @@ export const actions = {
   logInUser ({ commit, state }, email) {
     const user = state.users.find(u => u.email === email)
     if (!user) {
-      return false
+      return null
     }
     commit(SET_CURRENT_USER, user)
-    return true
+    return user
   },
 
   getUser ({ commit, state }, id) {

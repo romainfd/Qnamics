@@ -3,7 +3,7 @@
     <v-col cols="12" sm="8" md="6">
       <v-card class="logo py-4 d-flex justify-center">
         <v-card-title>
-          Q.ON platform is made to be accessed on a mobile phone
+          Welcome on Q.ON platform
         </v-card-title>
         <v-card-actions>
           <v-btn nuxt to="/login">
@@ -19,6 +19,9 @@
 
 <script>
 export default {
-  layout: 'mobile-empty'
+  layout: 'mobile-empty',
+  beforeCreate () {
+    this.$router.push('/login')
+  }
 }
 </script>

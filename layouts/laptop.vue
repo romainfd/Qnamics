@@ -6,19 +6,19 @@
       </v-container>
     </v-main>
     <v-bottom-navigation v-model="page" app>
-      <v-btn to="/user" value="/user" nuxt>
-        <span>Home</span>
-        <v-icon>mdi-home</v-icon>
-      </v-btn>
-
-      <v-btn to="/trends" value="/trends" nuxt>
+      <v-btn to="/admin/dashboard" value="/admin/dashboard" nuxt>
         <span>Trends</span>
         <v-icon>mdi-chart-timeline-variant-shimmer</v-icon>
       </v-btn>
 
-      <v-btn to="/profile" value="/profile" nuxt>
-        <span>Profile</span>
-        <v-icon>mdi-account</v-icon>
+      <v-btn to="/admin/map" value="/admin/map" nuxt>
+        <span>Map</span>
+        <v-icon>mdi-map</v-icon>
+      </v-btn>
+
+      <v-btn to="/login" value="/login" nuxt>
+        <span>Logout</span>
+        <v-icon>mdi-door</v-icon>
       </v-btn>
     </v-bottom-navigation>
   </v-app>

@@ -20,6 +20,11 @@
         <span>Profile</span>
         <v-icon>mdi-account</v-icon>
       </v-btn>
+
+      <v-btn to="/login" value="/login" nuxt>
+        <span>Logout</span>
+        <v-icon>mdi-door</v-icon>
+      </v-btn>
     </v-bottom-navigation>
   </v-app>
 </template>

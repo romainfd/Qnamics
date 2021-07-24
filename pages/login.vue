@@ -82,7 +82,7 @@
 
 <script>
 export default {
-  layout: 'mobile-empty',
+  layout: 'empty',
   data () {
     return {
       user: {
@@ -105,9 +105,9 @@ export default {
   methods: {
     async login () {
       if (!this.$refs.form.validate()) { return }
-      const loggedIn = await this.$store.dispatch('logInUser', this.user.email)
-      if (loggedIn) {
-        await this.$router.push('/user')
+      const loggedInUser = await this.$store.dispatch('logInUser', this.user.email)
+      if (loggedInUser) {
+        await this.$router.push(loggedInUser.admin ? '/admin/dashboard' : '/user')
       } else {
         this.$refs.form.reset()
       }
