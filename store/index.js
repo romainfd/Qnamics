@@ -1,3 +1,4 @@
+import vuetifyColors from 'vuetify/lib/util/colors'
 const seedrandom = require('seedrandom')
 const { SET_CURRENT_USER, SET_GEO_DATA, colors } = require('./constants')
 
@@ -105,24 +106,28 @@ export const state = () => ({
       price: []
     },
     cards: [{
+      color: vuetifyColors.orange.lighten5,
       label: 'Revenue',
       value: 64.3,
       unit: 'M€',
       values: randomArray(3, 0.3, 24, 'revenue'),
       keys: hoursInDay
     }, {
+      color: vuetifyColors.lightBlue.lighten5,
       label: 'Profit',
       value: 2.1,
       unit: 'M€',
       values: randomArray(0.1, 0.01, 24, 'profit'),
       keys: hoursInDay
     }, {
+      color: vuetifyColors.red.lighten5,
       label: 'Average price',
       value: 0.34,
       unit: 'ct€/kWh',
       values: randomArray(0.13, 0.02, 24, 'prices'),
       keys: hoursInDay
     }, {
+      color: vuetifyColors.green.lighten5,
       label: 'Energy provided',
       value: 123.7,
       unit: 'MWh',

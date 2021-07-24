@@ -1,5 +1,5 @@
 <template>
-  <v-card style="height: 100%">
+  <v-card style="height: 100%" :color="data.color">
     <v-row class="px-5">
       <v-col cols="8">
         <p class="text-h6">
