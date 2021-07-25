@@ -1,6 +1,6 @@
 <template>
-  <v-card style="height: 100%" :color="data.color">
-    <v-row class="px-5">
+  <v-card :color="data.color">
+    <v-row class="px-5 mb-n8">
       <v-col cols="8">
         <p class="text-h6">
           {{ data.label }}
@@ -11,16 +11,18 @@
         <span class="text-h6">{{ data.unit }}</span>
       </v-col>
     </v-row>
-    <v-row>
+    <v-row class="pt-0">
       <ChartLine
-        class="px-5"
+        class="px-5 pb-3"
         :data="lineData"
         :units="{ style: 'currency', currency: 'EUR', override: { suffix: data.unit } }"
-        style="width: 100% !important; height: 30vh !important;"
+        :style="'width: 100% !important; height:' + options.height + ' !important;'"
         :line-at-index="[{
           pointIndex: (new Date()).getHours(),
           pointText: 'Now'
         }]"
+        :hide-x-labels="options.hideXLabels"
+        stacked
       />
     </v-row>
   </v-card>
@@ -32,6 +34,15 @@ export default {
     data: {
       type: Object,
       required: true
+    },
+    options: {
+      type: Object,
+      default: () => {
+        return {
+          height: '30vh',
+          hideXLabels: false
+        }
+      }
     }
   },
   computed: {

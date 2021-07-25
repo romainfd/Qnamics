@@ -124,7 +124,7 @@ export const state = () => ({
       label: 'Average price',
       value: 0.34,
       unit: 'ct€/kWh',
-      values: randomArray(0.13, 0.02, 24, 'prices'),
+      values: randomArray(0.34, 0.03, 24, 'prices'),
       keys: hoursInDay
     }, {
       color: vuetifyColors.green.lighten5,
@@ -240,8 +240,118 @@ export const actions = {
     return data
   },
 
-  getCityData ({ commit, state }, cityName) {
-    return state.geodata.find(c => c.properties.NAME_3 === cityName)
+  async getAreaData ({ commit, state, dispatch }, areaName) {
+    if (!state.geodata) {
+      await dispatch('getGeoData')
+    }
+    const areaData = state.geodata.find(a => a.properties.NAME_3 === areaName)
+    if (areaData) {
+      let data = areaData.properties
+      data = {
+        cards: [{
+          color: vuetifyColors.green.lighten5,
+          label: 'Price sold',
+          value: 34,
+          unit: 'ct€/kWh',
+          values: randomArray(32, 8, 24, 'prices-' + data.NAME_3),
+          keys: hoursInDay
+        }, {
+          color: vuetifyColors.orange.lighten5,
+          label: 'Spot price paid',
+          value: 29,
+          unit: 'ct€/kWh',
+          values: randomArray(27, 6, 24, 'spot-' + data.NAME_3),
+          keys: hoursInDay
+        }, {
+          color: vuetifyColors.lightBlue.lighten5,
+          label: 'Profit',
+          value: 24,
+          unit: '%',
+          values: randomArray(24, 4, 24, 'profit-' + data.NAME_3),
+          keys: hoursInDay
+        }, {
+          color: vuetifyColors.red.lighten5,
+          label: 'Profit over customer lifetime',
+          value: 19,
+          unit: '%',
+          values: randomArray(19, 2, 24, 'profit-' + data.NAME_3),
+          keys: hoursInDay
+        }],
+        energyMix: {
+          // Ref.: https://pbs.twimg.com/media/Ef7u_oxWoAAHisk.jpg (H1 2020 in Germany)
+          values: [33.9, 27.7, 13.9, 5.8, 8.7, 4.4, 2.0, 0.7, 0.7, 2.1],
+          keys: ['Oil', 'Gas', 'Coal', 'Nuclear', 'Biomass', 'Wind', 'Solar', 'Hydro', 'Geothermal', 'Others'],
+          colors: [
+            vuetifyColors.red.lighten3,
+            vuetifyColors.grey.lighten2,
+            vuetifyColors.brown.lighten3,
+            vuetifyColors.purple.lighten3,
+            vuetifyColors.lime.lighten2,
+            vuetifyColors.teal.lighten3,
+            vuetifyColors.amber.lighten3,
+            vuetifyColors.lightBlue.lighten3,
+            vuetifyColors.lightGreen.lighten3,
+            vuetifyColors.blueGrey.lighten3
+          ],
+          datasets: {
+            values: [{
+              label: 'Oil',
+              data: randomArray(33.9, 4, 24, 'energyMix1'),
+              backgroundColor: vuetifyColors.red.lighten3,
+              fill: true
+            }, {
+              label: 'Gas',
+              data: randomArray(27.7, 2.5, 24, 'energyMix2'),
+              backgroundColor: vuetifyColors.grey.lighten2,
+              fill: true
+            }, {
+              label: 'Coal',
+              data: randomArray(13.9, 2, 24, 'energyMix3'),
+              backgroundColor: vuetifyColors.brown.lighten3,
+              fill: true
+            }, {
+              label: 'Nuclear',
+              data: randomArray(5.8, -2, 24, 'energyMix1'),
+              backgroundColor: vuetifyColors.purple.lighten3,
+              fill: true
+            }, {
+              label: 'Biomass',
+              data: randomArray(8.7, -2, 24, 'energyMix2'),
+              backgroundColor: vuetifyColors.lime.lighten2,
+              fill: true
+            }, {
+              label: 'Wind',
+              data: randomArray(4.4, -1.5, 24, 'energyMix3'),
+              backgroundColor: vuetifyColors.teal.lighten3,
+              fill: true
+            }, {
+              label: 'Solar',
+              data: randomArray(2, -1, 24, 'energyMix1'),
+              backgroundColor: vuetifyColors.amber.lighten3,
+              fill: true
+            }, {
+              label: 'Hydro',
+              data: randomArray(0.7, -0.5, 24, 'energyMix2'),
+              backgroundColor: vuetifyColors.lightBlue.lighten3,
+              fill: true
+            }, {
+              label: 'Geothermal',
+              data: randomArray(0.7, -0.5, 24, 'energyMix3'),
+              backgroundColor: vuetifyColors.lightGreen.lighten3,
+              fill: true
+            }, {
+              label: 'Others',
+              data: randomArray(2.1, -1, 24, 'energyMix1'),
+              backgroundColor: vuetifyColors.blueGrey.lighten3,
+              fill: true
+            }],
+            keys: hoursInDay
+          }
+        },
+        ...data
+      }
+      return data
+    }
   }
 }
 

@@ -76,7 +76,11 @@
             </span>
             <span>kWh</span>
           </v-col>
-          <ChartBar :data="barData" style="width: 100% !important; height: 200px !important;" />
+          <ChartBar
+            :data="barData"
+            style="width: 100% !important; height: 200px !important;"
+            :units="{ style: 'currency', currency: 'EUR', override: { suffix: '%' } }"
+          />
         </v-row>
       </v-flex>
     </v-layout>

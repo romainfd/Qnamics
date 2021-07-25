@@ -17,7 +17,7 @@
           </v-card-subtitle>
         </v-col>
         <v-col cols="4">
-          <v-btn>
+          <v-btn :to="'/admin/area/' + area.NAME_3">
             <v-icon left>
               mdi-magnify-plus-outline
             </v-icon>

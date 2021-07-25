@@ -56,7 +56,7 @@ export default {
         ...(this.units && {
           tooltips: {
             callbacks: {
-              label: this.labelFunction(this.units)
+              label: this.labelFunction(this.units, 'doughnut')
             }
           }
         })

@@ -30,6 +30,10 @@ export default {
     hideXLabels: {
       type: Boolean,
       default: false
+    },
+    stacked: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {
@@ -51,15 +55,22 @@ export default {
             ticks: {
               display: !this.hideXLabels
             }
+          }],
+          yAxes: [{
+            stacked: this.stacked
           }]
         },
-        ...(this.units && {
-          tooltips: {
+        tooltips: {
+          ...(this.units && {
             callbacks: {
-              label: this.labelFunction(this.units)
+              label: this.labelFunction(this.units, 'line')
             }
-          }
-        }),
+          }),
+          // to display all the labels
+          mode: 'nearest',
+          axis: 'x',
+          intersect: false
+        },
         lineAtIndex: this.lineAtIndex
       }
     }

@@ -1,6 +1,6 @@
 const cgartMixin = {
   methods: {
-    labelFunction (units) {
+    labelFunction (units, chartType) {
       return (tooltipItem, data) => {
         let label = ''
         // get the concerned dataset
@@ -26,12 +26,18 @@ const cgartMixin = {
         // Collect value label
         const valueLabel = data.labels[tooltipItem.index]
 
-        if (datasetLabel && valueLabel) {
-          label = `${datasetLabel} (${valueLabel}): `
-        } else if (datasetLabel) {
-          label = `${datasetLabel}: `
-        } else if (valueLabel) {
-          label = `${valueLabel}: `
+        if (chartType === 'line' || chartType === 'bar') {
+          if (datasetLabel) {
+            label = `${datasetLabel}: `
+          }
+        } else if (chartType === 'doughnut') {
+          if (datasetLabel && valueLabel) {
+            label = `${datasetLabel}: (${valueLabel})`
+          } else if (datasetLabel) {
+            label = `${datasetLabel}: `
+          } else if (valueLabel) {
+            label = `${valueLabel}: `
+          }
         }
 
         return label + value

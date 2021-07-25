@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-row style="height: 100%;" class="my-5 mx-3 pb-5">
+    <v-row style="height: 100%;" class="my-10 mx-3 pb-5">
       <v-col v-for="card in adminCards" :key="card.label" cols="6">
         <SparklineCard :data="card" />
       </v-col>

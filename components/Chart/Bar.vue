@@ -44,13 +44,17 @@ export default {
             stacked: true
           }]
         },
-        ...(this.units && {
-          tooltips: {
+        tooltips: {
+          ...(this.units && {
             callbacks: {
-              label: this.labelFunction(this.units)
+              label: this.labelFunction(this.units, 'bar')
             }
-          }
-        })
+          }),
+          // to display all the labels
+          mode: 'nearest',
+          axis: 'x',
+          intersect: false
+        }
       }
     }
   },
