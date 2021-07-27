@@ -38,6 +38,7 @@
                 prepend-icon="mdi-lock"
                 label="Password"
                 type="password"
+                autocomplete="on"
               />
               <v-checkbox
                 v-if="options.isLoggingIn"
