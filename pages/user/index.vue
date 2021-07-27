@@ -79,7 +79,7 @@
           <ChartBar
             :data="barData"
             style="width: 100% !important; height: 200px !important;"
-            :units="{ style: 'currency', currency: 'EUR', override: { suffix: '%' } }"
+            :units="{ style: 'currency', currency: 'EUR', override: { suffix: 'ct€/kWh' } }"
           />
         </v-row>
       </v-flex>
