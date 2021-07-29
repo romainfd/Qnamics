@@ -19,7 +19,7 @@ export const state = () => ({
     createdAt: '27/02/2021'
   }, {
     id: '13463279',
-    name: 'Admin Q.ON',
+    name: 'Admin Qnamics',
     email: 'admin@mail.com',
     createdAt: '27/02/2021',
     admin: true
@@ -209,7 +209,7 @@ export const actions = {
   },
 
   async getGeoData ({ commit, state }) {
-    // ToDo: call backend to get both geo data + consumptions / Q.ON data
+    // ToDo: call backend to get both geo data + consumptions / Qnamics data
     // 1. Geo data
     // Cities
     // const response = await fetch('https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/4_kreise/4_niedrig.geo.json')
@@ -217,7 +217,7 @@ export const actions = {
     // Regions
     // const response = await fetch('https://raw.githubusercontent.com/isellsoap/deutschlandGeoJSON/main/3_regierungsbezirke/4_niedrig.geo.json')
     const data = (await response.json()).features
-    // 2. Q.ON data
+    // 2. Qnamics data
     for (const area of data) {
       const minGreenShare = 0.11
       const maxGreenShare = 0.35

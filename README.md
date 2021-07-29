@@ -1,4 +1,4 @@
-# Q.ON
+# Qnamics
 
 ## Next steps
 - [Better authentification management](https://www.digitalocean.com/community/tutorials/implementing-authentication-in-nuxtjs-app)

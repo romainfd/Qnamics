@@ -5,7 +5,7 @@
         <div class="text-h4 my-10">
           <v-icon class="mr-2" large>
             mdi-leaf
-          </v-icon> My Q.ON
+          </v-icon> My Qnamics
         </div>
         <v-card class="my-5">
           <v-card-text>
