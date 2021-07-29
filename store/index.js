@@ -110,14 +110,22 @@ export const state = () => ({
       label: 'Revenue',
       value: 64.3,
       unit: 'M€',
-      values: randomArray(3, 0.3, 24, 'revenue'),
+      values: [
+        ...randomArray(2.7, 0.3, 8, 'revenue'),
+        ...randomArray(3, 0.3, 8, 'revenue2'),
+        ...randomArray(3.3, 0.3, 8, 'revenue3')
+      ],
       keys: hoursInDay
     }, {
       color: vuetifyColors.lightBlue.lighten5,
       label: 'Profit',
       value: 2.1,
       unit: 'M€',
-      values: randomArray(0.1, 0.01, 24, 'profit'),
+      values: [
+        ...randomArray(0.09, 0.01, 8, 'profit'),
+        ...randomArray(0.1, 0.01, 8, 'profit2'),
+        ...randomArray(0.11, 0.01, 8, 'profit3')
+      ],
       keys: hoursInDay
     }, {
       color: vuetifyColors.red.lighten5,
@@ -131,7 +139,11 @@ export const state = () => ({
       label: 'Energy provided',
       value: 123.7,
       unit: 'MWh',
-      values: randomArray(5, 0.5, 24, 'energy'),
+      values: [
+        ...randomArray(4.5, 0.5, 8, 'energy'),
+        ...randomArray(5, 0.5, 8, 'energy'),
+        ...randomArray(5.5, 0.5, 8, 'energy')
+      ],
       keys: hoursInDay
     }]
   }
@@ -267,14 +279,22 @@ export const actions = {
           label: 'Profit',
           value: 24,
           unit: '%',
-          values: randomArray(24, 4, 24, 'profit-' + data.NAME_3),
+          values: [
+            ...randomArray(20, 4, 8, 'profit-' + data.NAME_3),
+            ...randomArray(24, 4, 8, 'profit2-' + data.NAME_3),
+            ...randomArray(28, 4, 8, 'profit3-' + data.NAME_3)
+          ],
           keys: hoursInDay
         }, {
           color: vuetifyColors.red.lighten5,
           label: 'Profit over customer lifetime',
           value: 19,
           unit: '%',
-          values: randomArray(19, 2, 24, 'profit-' + data.NAME_3),
+          values: [
+            ...randomArray(17, 2, 8, 'profit-' + data.NAME_3),
+            ...randomArray(19, 2, 8, 'profit2-' + data.NAME_3),
+            ...randomArray(21, 2, 8, 'profit3-' + data.NAME_3)
+          ],
           keys: hoursInDay
         }],
         energyMix: {
