@@ -98,7 +98,7 @@
         </v-row>
         <v-row class="justify-center pt-5">
           <v-btn nuxt :to="{name: 'login', params: {signup: true}}" center>
-            Join the mouvement
+            Join the movement
           </v-btn>
         </v-row>
       </v-flex>
