@@ -46,10 +46,10 @@
                 label="Stay logged in?"
               />
               <v-alert
-                :v-if="showAlert"
+                v-if="showAlert"
                 border="left"
                 dense
-                elevation="5"
+                elevation="3"
                 outlined
                 type="error"
               >
