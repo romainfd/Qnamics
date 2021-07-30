@@ -119,9 +119,14 @@ export default {
       if (!this.$refs.form.validate()) { return }
       const loggedInUser = await this.$store.dispatch('logInUser', this.user.email)
       if (loggedInUser) {
-        await this.$router.push(loggedInUser.admin ? '/admin/dashboard' : '/user')
+        if (!loggedInUser.admin && !this.$device.isMobile) {
+          // User interface not accessible outside of mobile
+          this.showAlert = true
+          this.$refs.form.reset()
+        } else {
+          await this.$router.push(loggedInUser.admin ? '/admin/dashboard' : '/user')
+        }
       } else {
-        this.showAlert = true
         this.$refs.form.reset()
       }
     }
