@@ -45,6 +45,16 @@
                 v-model="options.shouldStayLoggedIn"
                 label="Stay logged in?"
               />
+              <v-alert
+                :v-if="showAlert"
+                border="left"
+                dense
+                elevation="5"
+                outlined
+                type="error"
+              >
+                The user interface is only accessible on mobile
+              </v-alert>
               <v-btn
                 v-if="options.isLoggingIn"
                 block
@@ -86,6 +96,7 @@ export default {
   layout: 'empty',
   data () {
     return {
+      showAlert: false,
       user: {
         email: null,
         password: null,
@@ -110,6 +121,7 @@ export default {
       if (loggedInUser) {
         await this.$router.push(loggedInUser.admin ? '/admin/dashboard' : '/user')
       } else {
+        this.showAlert = true
         this.$refs.form.reset()
       }
     }
