@@ -1,7 +1,6 @@
-# Qnamics
+# [Qnamics](https://qnamics.netlify.app/)
 
-## Next steps
-- [Better authentification management](https://www.digitalocean.com/community/tutorials/implementing-authentication-in-nuxtjs-app)
+[Presentation](https://youtu.be/Yeh1uznUp64?t=1131) - [Demo](https://youtu.be/Yeh1uznUp64?t=1304) - [Platform](https://qnamics.netlify.app/)
 
 ## Build Setup
 
@@ -20,53 +19,48 @@ $ npm run start
 $ npm run generate
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+## Exploring
 
-## Special Directories
+--> [ACCESSIBLE ONLINE](https://qnamics.netlify.app/) <--
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+An online version of the app is accessible at https://qnamics.netlify.app/. User interface is accessible on a mobile with `john@mail.com` and any password. Admin interface is accessible on a laptop with `admin@mail.com` and any password.
+
+
+For a live presentation during the [Quantum Entrepreneurship Lab](https://www.pushquantum.tech/qel-v2) - Demo Day of
+
+--> [the solution](https://youtu.be/Yeh1uznUp64?t=1131)
+
+--> [the web interfaces](https://youtu.be/Yeh1uznUp64?t=1304)
+
+## Repository structure
 
 ### `assets`
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+The assets directory contains uncompiled assets such as Sass files.
 
 ### `components`
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+The components directory contains the Vue.js components. Components make up the different parts of pages and can be reused and imported into pages, layouts and even other components.
 
 ### `layouts`
 
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
+Layouts help to change the look and feel of the app like have distinct layouts for mobile and desktop.
 
 ### `pages`
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
+This directory contains the application views and routes.
 
 ### `plugins`
 
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
+The plugins directory contains JavaScript plugins to run before instantiating the root Vue.js Application.
 
 ### `static`
 
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
+This directory contains the static files. 
 
 ### `store`
 
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
+This directory contains the Vuex store files. Having centralized all data interactions there makes it simple to eventually use a real backend.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+## Next steps
+- [Better authentification management](https://www.digitalocean.com/community/tutorials/implementing-authentication-in-nuxtjs-app)
