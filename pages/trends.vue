@@ -8,7 +8,15 @@
           </v-icon>
           Trends
         </div>
-        <v-btn-toggle v-model="duration" style="width:50%" class="mb-5">
+        <v-btn-toggle v-model="type" style="width:50%" class="mb-1" mandatory>
+          <v-btn block small value="price">
+            Price
+          </v-btn>
+          <v-btn block small value="energyMix">
+            Mix
+          </v-btn>
+        </v-btn-toggle>
+        <v-btn-toggle v-model="duration" style="width:50%" class="mb-5" mandatory>
           <v-btn block small value="today">
             Today
           </v-btn>
@@ -18,7 +26,7 @@
         </v-btn-toggle>
         <ChartLine
           :data="lineData"
-          :units="{ style: 'currency', currency: 'EUR', override: { suffix: 'ct€/kWh' } }"
+          :units="{ style: 'currency', currency: 'EUR', override: { suffix } }"
           style="width: 100% !important; height: 72vh !important;"
           :line-at-index="[{
             pointIndex: (new Date()).getHours(),
@@ -37,6 +45,7 @@ export default {
   layout: 'mobile',
   data () {
     return {
+      type: 'price',
       duration: 'today'
     }
   },
@@ -46,18 +55,10 @@ export default {
   computed: {
     ...mapGetters(['loggedInUser', 'forecast']),
     lineData () {
-      return {
-        labels: this.forecast[this.duration].keys,
-        datasets: [
-          {
-            data: this.forecast[this.duration].values,
-            backgroundColor: '#34c369',
-            fill: false,
-            borderColor: '#4BC0C0',
-            tension: 0.1
-          }
-        ]
-      }
+      return this.forecast[this.type][this.duration]
+    },
+    suffix () {
+      return this.type === 'energyMix' ? '%' : 'ct€/kWh'
     }
   }
 }
